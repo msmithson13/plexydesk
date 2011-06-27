@@ -20,6 +20,7 @@
 
 #include <QtDeclarative/qdeclarativeextensionplugin.h>
 #include <QtDeclarative/qdeclarative.h>
+#include "qdeclarativefolderlistmodel.h"
 #include "support.h"
 
 class QmlSupportPlugin : public QDeclarativeExtensionPlugin
