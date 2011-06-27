@@ -18,8 +18,7 @@
 *******************************************************************************/
 
 import Qt 4.7
-import Qt.labs.folderlistmodel 1.0
-import FolderView 1.0
+import Plexy.FolderSupport 2.0
 import "resources"
 import "resources/images" as Images
 import "resources/Scripts.js" as Scripts
@@ -54,7 +53,7 @@ Rectangle{
         style: Text.Raised
         opacity: 1
     }
-   
+
     Rectangle
     {
         id: rectangle1
@@ -96,7 +95,6 @@ Rectangle{
                                 onClicked: Scripts.goInto(fileName,flm,backgroundHolder,folderView)
                             }
                         }
-
                 }
                 model: flm
                 delegate: fileDelegate

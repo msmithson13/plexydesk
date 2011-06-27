@@ -21,8 +21,10 @@
 
 void QmlSupportPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterType<Support>(uri,1,0,"FolderView");
+    Q_ASSERT(uri == QLatin1String("Plexy.FolderSupport"));
+    qmlRegisterType<Support>(uri,2,0,"FolderView");
+    qmlRegisterType<QDeclarativeFolderListModel>(uri,2,0,"FolderListModel");
 }
 
-Q_EXPORT_PLUGIN2(folderview, QmlSupportPlugin);
+Q_EXPORT_PLUGIN2(foldersupport, QmlSupportPlugin);
 

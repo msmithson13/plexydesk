@@ -7,15 +7,18 @@ INCLUDE_DIRECTORIES(
 )
 
 SET(sourceFiles
+	qdeclarativefolderlistmodel.cpp
 	plugin.cpp
 	support.cpp
 )
 
 SET(headerFiles
+	qdeclarativefolderlistmodel.h
 	support.h
 )
 
 SET(QTMOC_SRCS
+   qdeclarativefolderlistmodel.h
    support.h
    plugin.h
 )
@@ -31,14 +34,7 @@ SET(libs
    ${PLEXY_CORE_LIBRARY}
 )
 
-add_library (folderview  SHARED ${sourceFiles} ${QT_MOC_SRCS})
-
-#set_target_properties(folderview PROPERTIES DEFINE_SYMBOL Q_DECLARATIVE_EXPORT)
-
-
-
-
-
+add_library (foldersupport  SHARED ${sourceFiles} ${QT_MOC_SRCS})
 #IF(MINGW)
 #    SET_TARGET_PROPERTIES(desktopview PROPERTIES
 #        IMPORT_SUFFIX ".lib"
@@ -48,15 +44,17 @@ add_library (folderview  SHARED ${sourceFiles} ${QT_MOC_SRCS})
 #ENDIF(MINGW)
 
 TARGET_LINK_LIBRARIES(
-   folderview
+   foldersupport
    ${libs}
 )
 
 #work around for ubuntu
-
 if (${QT_IMPORTS_DIR})
   SET(QT_IMPORTS_DIR ${CMAKE_INSTALL_PREFIX}/lib/qt4/imports/)
 ENDIF(${QT_IMPORTS_DIR})
 
-INSTALL (TARGETS folderview DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/qt4/imports/FolderView/)
-INSTALL (FILES ${CMAKE_CURRENT_SOURCE_DIR}/qmldir  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/qt4/imports/FolderView/)
+#INSTALL (TARGETS foldersupport DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/qt4/imports/Plexy/FolderSupport/)
+#INSTALL (FILES ${CMAKE_CURRENT_SOURCE_DIR}/qmldir  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/qt4/imports/Plexy/FolderSupport/)
+
+INSTALL (TARGETS foldersupport DESTINATION ${QT_IMPORTS_DIR}/Plexy/FolderSupport/)
+INSTALL (FILES ${CMAKE_CURRENT_SOURCE_DIR}/qmldir DESTINATION ${QT_IMPORTS_DIR}/Plexy/FolderSupport/)
