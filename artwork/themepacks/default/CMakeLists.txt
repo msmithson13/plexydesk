@@ -41,7 +41,6 @@ INSTALL(FILES ${FOLDERVIEW_RES_JS} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/ple
 INSTALL(FILES ${FOLDERVIEW_IMGS} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/plexy/themepack/default/folderview/resources/images)
 
 INSTALL(FILES ${DIGITALCLOCK} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/plexy/themepack/default/digitalclock/)
-INSTALL(FILES ${DIGITALCLOCK} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/plexy/themepack/default/digitalclock/)
 INSTALL(FILES ${DIGITALCLOCK_IMGS} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/plexy/themepack/default/digitalclock/images)
 
 INSTALL(FILES ${WELCOMEQML} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/plexy/themepack/default/welcome/)

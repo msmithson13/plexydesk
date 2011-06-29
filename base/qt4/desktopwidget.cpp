@@ -59,6 +59,7 @@ public:
     QPointF clickPos;
     bool backdrop;
     QGraphicsObject *qmlChild;
+    QString qmlChildName;
 };
 
 DesktopWidget::DesktopWidget(const QRectF &rect, QWidget *widget) :
@@ -80,6 +81,7 @@ DesktopWidget::DesktopWidget(const QRectF &rect, QWidget *widget) :
     d->angle = 0;
     d->angleHide = 0;
     d->scale = 1;
+    d->qmlChildName = "QML App";
 
     d->panel = QPixmap(applicationDirPath() +
          "/share/plexy/skins/widgets/widget01/Panel.png");
@@ -193,6 +195,7 @@ void DesktopWidget::qmlFromUrl(const QUrl &url)
             objectRect.y(),
             objectRect.width(),
             objectRect.height());
+    d->panel = QPixmap(QSize(objectRect.width(),objectRect.height()));
     d->saveRect = borderRect;
     setRect(borderRect);
     d->qmlChild->setParentItem(this);
@@ -326,6 +329,8 @@ void DesktopWidget::configState(DesktopWidget::State s)
     prepareGeometryChange();
     if (s == DOCK) {
         setRect(0, 0, d->dock.width(), d->dock.height());
+        if (d->qmlChild)
+            d->qmlChild->hide();
     } else {
         setRect(0, 0, d->panel.width(), d->panel.height());
     }
@@ -363,6 +368,11 @@ void DesktopWidget::paintDockView(QPainter *p, const QRectF &rect)
     p->save();
     p->setRenderHints(QPainter::SmoothPixmapTransform);
     p->drawPixmap(QRect(0, 0, rect.width(), rect.height()), d->dock);
+    if (d->qmlChild){
+        p->setPen(QColor(255, 255, 255));
+        p->setFont(QFont("Bitstream Charter", 10));
+        p->drawText(QRect(0,5, d->dock.width(), 64), Qt::AlignCenter, d->qmlChildName);
+    }
     p->restore();
 }
 
@@ -390,5 +400,10 @@ void DesktopWidget::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 QString DesktopWidget::applicationDirPath()
 {
     return QDir::toNativeSeparators(PLEXPREFIX);
+}
+
+void DesktopWidget::setQmlName(const QString &name)
+{
+    d->qmlChildName = name;
 }
 } //namespace PlexyDesk

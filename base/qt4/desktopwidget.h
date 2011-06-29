@@ -76,6 +76,7 @@ public :
     void setBackFaceImage(QPixmap);
 
     void qmlFromUrl(const QUrl &url);
+    void setQmlName(const QString &name);
     bool isQMLWidget() const;
 
 public Q_SLOTS:

@@ -75,7 +75,7 @@ QString ThemepackLoader::qmlFilesFromTheme(const QString &name)
     d->mSettings->beginGroup(name);
     QString fileName = d->mSettings->value("mainfile").toString();
     QString baseFolder = d->mSettings->value("basefolder").toString();
-    qDebug() << Q_FUNC_INFO << name << ":" << fileName;
+//    qDebug() << Q_FUNC_INFO << name << ":" << fileName;
     d->mSettings->endGroup();
 
     QDir path(QString("%1/%2").arg(d->mBasePath).arg(baseFolder));

@@ -43,8 +43,8 @@ import Qt 4.7
 import "PhotoViewerCore" //as PhotoViewer
 
 Rectangle{
-    width: 880
-    height: 600
+    width: 870
+    height: 550
     color: "#00000000"
     Image {
         id: background
@@ -62,10 +62,13 @@ Rectangle {
     property real downloadProgress: 0
     property bool imageLoading: false
     property bool editMode: false
+    x: 40
+    y: 34
     anchors.verticalCenter: parent.verticalCenter
     anchors.horizontalCenter: parent.horizontalCenter
-    anchors.verticalCenterOffset: -10
+    anchors.verticalCenterOffset: -1
     width: 800; height: 480; color: "transparent"
+    anchors.horizontalCenterOffset: 0
     clip: true
     ListModel {
         id: photosModel

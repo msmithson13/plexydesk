@@ -199,10 +199,12 @@ void DesktopView::setThemePack(const QString &name)
             qDebug() << Q_FUNC_INFO << "Loading qml " << qmlWidget;
             DesktopWidget *parent = new DesktopWidget(QRectF(0,0,0,0));
             parent->qmlFromUrl(QUrl(d->mThemeLoader->qmlFilesFromTheme(qmlWidget)));
-            scene()->addItem(parent);
-            connect(parent, SIGNAL(close()), this, SLOT(closeDesktopWidget()));
             QPoint pos = d->mThemeLoader->widgetPos(qmlWidget);
+            parent->configState(d->mThemeLoader->widgetView(qmlWidget));
+            parent->setQmlName(qmlWidget);
             parent->setPos(pos);
+            connect(parent, SIGNAL(close()), this, SLOT(closeDesktopWidget()));
+            scene()->addItem(parent);
         }
 
     }
