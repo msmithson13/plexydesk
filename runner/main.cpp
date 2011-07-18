@@ -19,6 +19,7 @@
 
 #include <QtCore>
 #include <QtGui>
+#include <QDeclarativeComponent>
 #include <debug.h>
 
 #ifdef Q_WS_X11
@@ -42,7 +43,7 @@
 #include <plexyconfig.h>
 #include <debug.h>
 
-using namespace PlexyDesk;
+//using namespace PlexyDesk;
 
 int main( int argc, char * *argv )
 {
