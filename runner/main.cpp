@@ -21,6 +21,7 @@
 #include <QtGui>
 #include <QDeclarativeComponent>
 #include <QIcon>
+#include <QDeclarativeComponent>
 #include <debug.h>
 
 #ifdef Q_WS_X11
